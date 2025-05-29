@@ -27,8 +27,6 @@ services:
       - DB_USER=myuser
       - DB_PASSWORD=mypassword
       - DB_NAME=mydatabase
-    volumes:
-      - ./api:/app
 
   app:
     build:

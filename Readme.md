@@ -17,3 +17,18 @@ Este projeto contém uma aplicação frontend React e um backend Node.js. A form
 ```bash
 git clone https://github.com/FilipeGommess/decision.git
 cd decision
+```
+
+2. Execute o comando abaixo para subir os containers (frontend, backend e banco MySQL):
+
+```bash
+docker compose up --build
+```
+
+3. Aguarde a build dos containers e a inicialização dos serviços.
+
+---
+
+## Acessando a aplicação
+
+- Aplicação disponível em: [http://localhost:4173](http://localhost:4173)

@@ -1,2 +1,2 @@
 export * from './CreateUserDTO'
-export * from './EditUserDTO'
+export * from './tmp'
