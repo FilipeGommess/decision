@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: myapp_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  api:
+    build:
+      context: ./api
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    environment:
+      - DB_HOST=db
+      - DB_USER=myuser
+      - DB_PASSWORD=mypassword
+      - DB_NAME=mydatabase
+    volumes:
+      - ./api:/app
+
+  app:
+    build:
+      context: ./app
+    ports:
+      - "4173:4173"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+
+volumes:
+  mysql_data:
